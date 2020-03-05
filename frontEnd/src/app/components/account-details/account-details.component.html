@@ -1,0 +1,54 @@
+<div class="container-flex">
+<div class="row" style="margin-top: 30px;">
+  <div class="col-lg-3" >
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      
+      <a routerLink="/NewFeed" class="list-group-item btn list-group-item">News Feed</a>
+      <a routerLink="/BlockUser" class="list-group-item btn list-group-item ">Blocked Accounts</a>
+      <a routerLink="/AccountDetails" class="list-group-item btn list-group-item ">Account update</a>
+      <a routerLink="/Search" class="list-group-item btn list-group-item ">Search</a>
+      <a routerLink="/NewFeed" class="list-group-item btn list-group-item ">Logout</a>
+
+    </div>
+  </div>
+
+  <div class="col-9 col-md-8">
+  <form style="margin-left: 10vw;">
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">UserName</label>
+      <div class="col-sm-9">
+
+<!-- Username -->
+        <input type="text" class="form-control" id="staticUSername" value="" placeholder="Username">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-9">
+
+<!-- Password -->
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+      <div class="col-sm-9">
+<!-- Password confirm -->
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-9">
+<!-- Email -->
+        <input type="email" class="form-control" id="staticEmail" value="" placeholder="Email">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-warning">Confirm Identity</button>
+  </form>
+</div>
+</div>
+</div>
