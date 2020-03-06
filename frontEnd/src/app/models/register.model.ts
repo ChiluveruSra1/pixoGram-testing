@@ -1,6 +1,11 @@
-export class Login{
+export class Register{
     constructor(
-        public userName1: string,
-        public password:string
+        public fname: string,
+        public lname: string,
+        public username: string,
+        public dob: string,
+        public email: string,
+        public password:string,
+        public profilepic:string
     ){}
 }

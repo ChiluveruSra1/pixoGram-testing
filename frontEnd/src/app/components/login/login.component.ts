@@ -14,13 +14,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   userName1: string = "";
   password: string = "";
-  post: any;
-  isSubmitting = false;
 
   constructor(private fb: FormBuilder) {
     this.loginForm = fb.group({
       'userName1': ['', [Validators.required, Validators.minLength(3)]],
-      'password': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
+      'password': ['', [Validators.required, Validators.minLength(3)]],
 
     });
   }
@@ -28,7 +26,6 @@ export class LoginComponent implements OnInit {
   onlogin(data) {
     console.log(data)
     //localStorage.placeOrder=JSON.stringify(data)
-    
 
     if (localStorage.login == undefined) {
       var users = [];

@@ -25,6 +25,7 @@ public class Login {
 	private String password;
 	@Column(name = "email")
 	private String email;
+	private byte[] profilepic;
 	
 	public long getId() {
 		return id;
@@ -70,13 +71,20 @@ public class Login {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Login(String firstname, String lastname, String username, String password, String email) {
+	public Login(String firstname, String lastname, String username, String password, String email, byte[] profilepic) {
 		super();
 		this.fname = firstname;
 		this.lname = lastname;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.profilepic=profilepic;
+	}
+	public byte[] getProfilepic() {
+		return profilepic;
+	}
+	public void setProfilepic(byte[] profilepic) {
+		this.profilepic = profilepic;
 	}
 	
 	

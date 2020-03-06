@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-media',
@@ -8,13 +9,16 @@ import { FormGroup } from '@angular/forms';
 })
 export class UploadMediaComponent implements OnInit {
 
-  form:FormGroup
-  constructor() { }
+  form: FormGroup;
+  file: File;
 
-  ngOnInit(): void {
-  }
+  constructor(){}
+
+  ngOnInit(){}
+
   upload(){
-    console.log("registerd")
+    console.log("uploaded")
   }
+  
 
 }

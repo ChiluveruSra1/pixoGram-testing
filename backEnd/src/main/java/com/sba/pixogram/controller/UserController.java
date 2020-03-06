@@ -41,7 +41,7 @@ public class UserController {
 	@PostMapping(path = "/user/create")
 	public User createUser(@RequestBody User user) {
 		User _user = userService.createUser(user);
-		Login login=new Login(user.getFname(),user.getLname(),user.getUsername(),user.getPassword(),user.getEmail());
+		Login login=new Login(user.getFname(),user.getLname(),user.getUsername(),user.getPassword(),user.getEmail(),user.getProfilepic());
 		userService.createlogin(login);
 		return _user;
 	}
@@ -56,6 +56,7 @@ public class UserController {
 		u1.setLname(u.getLname());
 		u1.setUsername(u.getUsername());
 		u1.setPassword(u.getPassword());
+		u1.setProfilepic(u.getProfilepic());
 		return u1; 
 	}
 	

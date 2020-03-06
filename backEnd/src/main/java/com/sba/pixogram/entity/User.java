@@ -32,9 +32,10 @@ public class User {
 	private String password;
 	@Column(name = "email")
 	private String email;
+	private byte[] profilepic;
 	
 	
-	public User(long id, String firstname, String lastname, String username, String password, String email) {
+	public User(long id, String firstname, String lastname, String username, String password, String email,byte[] profilepic) {
 		super();
 		this.id = id;
 		this.fname = firstname;
@@ -42,6 +43,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.setProfilepic(profilepic);
 	}
 
 	public long getId() {
@@ -103,6 +105,14 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + fname + ", lastname=" + lname + ", username=" + username
 				+ ", password=" + password + ", email=" + email + "]";
+	}
+
+	public byte[] getProfilepic() {
+		return profilepic;
+	}
+
+	public void setProfilepic(byte[] profilepic) {
+		this.profilepic = profilepic;
 	}
 
 	

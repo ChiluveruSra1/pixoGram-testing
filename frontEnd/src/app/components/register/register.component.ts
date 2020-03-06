@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Register } from 'src/app/models/register.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserModel } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -10,56 +9,75 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerSuccess = false;
+  
 
-  registerForm: FormGroup;
-  fname:String
-  lname:String
-  username: String
-  dob: String
-  email: String
-  password:String
-  confirmpassword:String
-  profilepic:String
-  submitted:boolean=false
- 
-
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  u=new Register('','','','','','','')
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      'fname': [null, [Validators.required, Validators.minLength(3)]],
-      'lname': [null, [Validators.required, Validators.minLength(3)]],
-      'username': [null, [Validators.required, Validators.minLength(3)]],
-      'dob': [null, [Validators.required, Validators.minLength(3)]],
-      'email': [null, [Validators.required, Validators.minLength(3)]],
-      'password': [null, [Validators.required, Validators.minLength(8),Validators.maxLength(12), Validators.pattern('(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{8,}')]],
-      'confirmpassword':[null, [Validators.required]]      
-    },
-    { 
-      validators: this.password1.bind(this)
-    }
-    );
   }
 
-  onRegister() {
-    this.submitted = true;
-    let user = new UserModel(this.fname, this.lname, this.username, this.password, this.email,this.dob);
-    console.log("reg comp")
-    console.log(user)
-    this.userService.createUser(user).subscribe(
-      //x=>this.registerForm=x);
-      data => console.log(user), error => console.log(error));
-    this.registerSuccess = true;
+  registerForm: FormGroup;
+  fname:String=""
+  lname:String=""
+  username: string=""
+  dob: string=""
+  email: string=""
+  password:string=""
+  profilepic:string=""
+ 
+
+  constructor(private fb: FormBuilder) {
+    this.registerForm = fb.group({
+      'fname': ['', [Validators.required, Validators.minLength(3)]],
+      'lname': ['', [Validators.required, Validators.minLength(3)]],
+      'username': ['', [Validators.required, Validators.minLength(3)]],
+      'dob': ['', [Validators.required, Validators.minLength(3)]],
+      'email': ['', [Validators.required, Validators.minLength(3)]],
+      'password': ['', [Validators.required]],
+      'confirmpassword': ['', [Validators.required]]
+    /* },
+    { 
+      validators: this.password1.bind(this)
+    }); */
+
+  },{
+      validator: this.MustMatch.bind(this)
+  });
+    
+  }
+
+  onRegister(data) {
+    console.log(data +"registered")
   }
 
   upload() {
     console.log("registered")
   }
-  password1(registerForm: FormGroup) {
-    const { value: password } = registerForm.get('password');
+
+  MustMatch(registerForm: FormGroup) {
+    const { value: password1 } = registerForm.get('password');
     const { value: confirmPassword } = registerForm.get('confirmpassword');
-    return password === confirmPassword ? null : { passwordNotMatch: true };
+    return password1 === confirmPassword ? null : { passwordNotMatch: true };
   }
 
+
+ /*  MustMatch(controlName: string, matchingControlName: string) {
+    return (registerForm: FormGroup) => {
+        const control = registerForm.controls[controlName];
+        const matchingControl = registerForm.controls[matchingControlName];
+
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+            // return if another validator has already found an error on the matchingControl
+            return;
+        }
+
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    } 
+
+} */
 }

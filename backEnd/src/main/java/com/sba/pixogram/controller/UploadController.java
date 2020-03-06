@@ -58,7 +58,10 @@ public class UploadController {
 	     dbFile=uploadRepository.findById(userId);
 	     for(UploadPic uploadPic: dbFile) {
 	    	 byte[] blob= uploadPic.getData();
-	    	 String file_name = "C:\\Users\\Public\\EclipseImages" + userId + "_" + uploadPic.getFileName();
+	    	 //String file_name = "C:\\Users\\Alchemy\\Pictures\\Screenshots" + userId + "_" + uploadPic.getFileName();
+	    	 
+	    	 String file_name = uploadPic.getFileName();
+	    	 
 	    	 File file = new File(file_name);
 	    	 FileOutputStream os = new FileOutputStream(file);
 	    	 os.write(blob);
