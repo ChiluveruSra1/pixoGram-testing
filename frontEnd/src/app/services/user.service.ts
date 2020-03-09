@@ -14,7 +14,7 @@ export class UserService {
   
   firstName: String;
   username: String;
-  id: number;
+  id: Number;
   email: String;
 
   getUser(id: number): Observable<Object> {

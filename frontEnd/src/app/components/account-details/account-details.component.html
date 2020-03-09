@@ -11,25 +11,15 @@
 
     </div>
   </div>
-  {{updateForm.value | json }}
+
   <div class="col-9 col-md-8">
-  <form style="margin-left: 10vw;" [formGroup] = "updateForm" (ngSubmit) = "updateDetails(updateForm.value)">
+  <form style="margin-left: 10vw;">
     <div class="form-group row">
-      <label for="username" class="col-sm-2 col-form-label">User Name</label>
+      <label for="staticEmail" class="col-sm-2 col-form-label">UserName</label>
       <div class="col-sm-9">
 
 <!-- Username -->
-        <input  [class.is-invalid] = "updateForm.get('username').invalid && updateForm.get('username').touched" type="text" class="form-control" id="username" value="" placeholder="Username"
-          formControlName = "username"
-          [(ngModel)] = "username"
-          >
-        <div *ngIf = "updateForm.get('username').invalid && updateForm.get('username').touched">
-          <small *ngIf="updateForm.get('username').errors?.required" class="text-danger">Username is
-            required</small>
-        <small *ngIf="updateForm.get('username').errors?.minlength" class="text-danger">Minimum 3
-            character
-            required</small>
-        </div>
+        <input type="text" class="form-control" id="staticUSername" value="" placeholder="Username">
       </div>
     </div>
 
@@ -38,58 +28,23 @@
       <div class="col-sm-9">
 
 <!-- Password -->
-        <input [(ngModel)] = "password" type="password" class="form-control" id="inputPassword" 
-        formControlName = "password"
-        [class.is-invalid] = "updateForm.get('password').invalid && updateForm.get('password').touched"
-        placeholder="Password">
-        <div  *ngIf = "updateForm.get('password').invalid && updateForm.get('password').touched">
-          <small *ngIf="updateForm.get('password').errors?.required" class="text-danger">Password is
-            required</small>
-        <small *ngIf="updateForm.get('password').errors?.minlength" class="text-danger">Minimum 8
-            character
-            required</small>
-        <small *ngIf="updateForm.get('password').errors?.maxlength" class="text-danger">Maximum 12 
-                character
-                exceeded</small>
-                <br>
-        <small *ngIf="updateForm.get('password').errors?.pattern" class="text-danger">Use an alphanumeric password</small>
-        </div>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
       </div>
-    
     </div>
 
     <div class="form-group row">
       <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
       <div class="col-sm-9">
 <!-- Password confirm -->
-        <input [(ngModel)] = "confirmpassword" type="password" class="form-control" 
-        formControlName = "confirmpassword"
-        [class.is-invalid] = "updateForm.get('confirmpassword').invalid && updateForm.get('confirmpassword').touched"
-        id="confirmpassword" placeholder="Confirm Password">
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
       </div>
-      <div *ngIf="updateForm.get('confirmpassword').hasError('passwordNotMatch') && updateForm.get('confirmpassword').invalid && updateForm.get('confirmpassword').touched">
-        <small *ngIf="updateForm.get('confirmpassword').errors?.required" class="text-danger">password is required</small> 
-        <small *ngIf="updateForm.get('confirmpassword').errors?.passwordNotMatch" class="text-danger">password mismatch</small> 
-    </div> 
     </div>
 
     <div class="form-group row">
-      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-9">
 <!-- Email -->
-<input [(ngModel)]="email"
-pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" type="email" id="email"
-   [class.is-invalid]="updateForm.get('email').invalid && updateForm.get('email').touched"
-   class="form-control" formControlName="email" placeholder="Email">
-
-<div
-   *ngIf="updateForm.get('email').errors && (updateForm.get('email').invalid && updateForm.get('email').touched)">
-   <small class="text-danger" *ngIf="updateForm.get('email').errors.required">email field is
-       required</small>
-   <small class="text-danger" *ngIf="updateForm.get('email').errors.pattern">please provide a
-       valid
-       email address <b>(example@asd.com) </b></small>
-</div>
+        <input type="email" class="form-control" id="staticEmail" value="" placeholder="Email">
       </div>
     </div>
     <button type="submit" class="btn btn-warning">Confirm Identity</button>

@@ -6,15 +6,15 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.sba.pixogram.entity.UploadPic;
 
+@Repository
 public interface UploadRepository extends CrudRepository<UploadPic, Long> {
 
-	
-	UploadPic save(UploadPic dbFile);
+	List<UploadPic> findById(long userId);
 
-	@Query(value=" select f from UploadPic f where f.userId=?1")
-	public ArrayList<UploadPic> findById( long fileId);
+
 
 }

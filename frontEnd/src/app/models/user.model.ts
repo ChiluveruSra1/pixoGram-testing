@@ -6,6 +6,7 @@ export class UserModel{
             public username:String,
             public password:String,
             public email:String,
-            public dob:String
+            public dob:String,
+            public profilepic:String
     ){}
 }

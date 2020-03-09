@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserModel } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +17,15 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   userName1: string = "";
   password: string = "";
+  post: any;
+  invalidLogin = false;
+  users:UserModel[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private router: Router,private userService: UserService) {
+    this.userService.getUsers().subscribe(response => this.users = response);
     this.loginForm = fb.group({
       'userName1': ['', [Validators.required, Validators.minLength(3)]],
-      'password': ['', [Validators.required, Validators.minLength(3)]],
+      'password': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
 
     });
   }
@@ -27,16 +34,26 @@ export class LoginComponent implements OnInit {
     console.log(data)
     //localStorage.placeOrder=JSON.stringify(data)
 
-    if (localStorage.login == undefined) {
-      var users = [];
-      users.push(data)
-      localStorage.order = JSON.stringify(users)
+    
+    if (this.loginForm.invalid) {
+      return;
     }
-    else {
-      var newUsers = JSON.parse(localStorage.login)
-      newUsers.push(data)
-      localStorage.order = JSON.stringify(newUsers)
+
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].username === this.userName1 && this.users[i].password === this.password) {
+        this.router.navigate(['/uploadmedia']);
+        localStorage.setItem("userId", this.users[i].id.toString());
+        this.userService.firstName = this.users[i].fname;
+        this.userService.username = this.users[i].username;
+        this.userService.email = this.users[i].email;
+        this.userService.id = this.users[i].id;
+      } 
+      else {
+        this.invalidLogin = true;
+      }
     }
+    
+
 
   }
 }
