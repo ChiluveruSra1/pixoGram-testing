@@ -1,0 +1,61 @@
+<!-- 
+<div class="container">
+  <div class="row text-center text-lg-left">
+    <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let image of images">
+
+        <img class="img-fluid img-thumbnail" [src]="src.url" style="height: 171px; width: fit-content;">
+
+    </div>
+  </div>
+</div> -->
+
+<h2>jsdkgjkl</h2>
+
+<p>{{  myMedia }} </p>
+
+{{ src.url }}
+
+
+<div class="container">
+
+<h3>My Media</h3>
+
+<table>
+  <tbody>
+    <tr *ngFor="let m of myMedia">
+      <td>{{ m.title }}</td>
+      <td>{{ m }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+
+
+
+<div class="container px-5">
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#myMedia"> My Media </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="myMedia" class="container tab-pane active">
+      <br>
+      <h3>sjdgkljgskl</h3>
+      <div class="card-columns">
+        <div class="card" style="border-radius: 0" *ngFor="let p of myMedia">
+         <img class="card-img-top" [src] = "p.url" alt="My Media"> 
+          <h6>{{p.title}}</h6>
+          <div class="card-body">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

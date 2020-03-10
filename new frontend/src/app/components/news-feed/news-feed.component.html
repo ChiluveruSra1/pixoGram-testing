@@ -1,0 +1,38 @@
+<div class="container-flex">
+<div class="row" style="margin-top: 30px;">
+  <div class="col-lg-3" >
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        
+          <a routerLink="/NewFeed" class="list-group-item btn list-group-item">News Feed</a>
+          <a routerLink="/BlockUser" class="list-group-item btn list-group-item ">Blocked Accounts</a>
+          <a routerLink="/AccountDetails" class="list-group-item btn list-group-item ">Account update</a>
+          <a routerLink="/Search" class="list-group-item btn list-group-item ">Search</a>
+          <a routerLink="/NewFeed" class="list-group-item btn list-group-item ">Logout</a>
+
+      </div>
+    </div>
+
+  <div class="col-10 col-md-8" style="font-size: 2.4vh">
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th> Date</th>
+          <th> Time</th>
+          <th> Activity</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{newsf.date}}</td>
+            <td>{{newsf.time}}</td>
+            <td>{{newsf.activity}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+
+</div>
+</div>

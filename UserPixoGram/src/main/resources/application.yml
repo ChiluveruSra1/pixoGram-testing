@@ -1,0 +1,8 @@
+
+spring:
+  datasource:
+    password: welcome
+    url: jdbc:mysql://localhost:3306/hr
+    username: root
+server:
+  port: 8888
